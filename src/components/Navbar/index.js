@@ -1,15 +1,9 @@
 import MenuIcon from "@material-ui/icons/Menu";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
-  const [active, setActive] = useState("/");
-
-  const activeLinks = (link) => {
-    setActive(link);
-  };
-
   return (
-    <nav className="flex py-4 px-10 items-center justify-between shadow-md z-10">
+    <nav className="flex py-4 px-10 items-center justify-between shadow-md z-10 fixed w-full top-0 bg-white">
       <div className="flex items-center space-x-4">
         <img
           src="https://freepngimg.com/download/pokemon/37545-9-pokeball-free-download.png"
@@ -17,54 +11,77 @@ const Navbar = () => {
           width={40}
           height={40}
         />
-        <p className="font-thin font-mono text-2xl">Daily Poke</p>
+        <p className="font-thin font-mono text-2xl">Daily PokéLogs</p>
       </div>
-      <div className="p-1 shadow-sm rounded-md md:hidden cursor-pointer hover:shadow-md">
-        <MenuIcon className="hover:text-red-600" />
+      <div className="p-1 shadow-sm rounded-md md:hidden cursor-pointer hover:shadow-md hover:text-red-600">
+        <MenuIcon />
       </div>
       <ul className="md:flex space-x-10 font-mono hidden">
         <li>
-          <Link
-            onClick={() => activeLinks("/")}
+          <NavLink
+            activeStyle={styles.active}
+            isActive={(match, location) => {
+              if (location.pathname === "/") {
+                return true;
+              }
+            }}
             to="/"
-            className={
-              "/" === active
-                ? "text-red-600 hover:text-red-800 text-lg"
-                : "hover:text-red-800 text-lg"
-            }
+            className={"hover:text-red-800 text-lg"}
           >
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
-            onClick={() => activeLinks("/blogs")}
+          <NavLink
+            activeStyle={styles.active}
+            isActive={(match, location) => {
+              if (location.pathname === "/blogs") {
+                return true;
+              }
+            }}
             to="/blogs"
-            className={
-              "/blogs" === active
-                ? "text-red-600 hover:text-red-800 text-lg"
-                : "hover:text-red-800 text-lg"
-            }
+            className={"hover:text-red-800 text-lg"}
           >
             Blogs
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
-            onClick={() => activeLinks("/about")}
+          <NavLink
+            activeStyle={styles.active}
+            isActive={(match, location) => {
+              if (location.pathname === "/pokedex") {
+                return true;
+              }
+            }}
+            to="/pokedex"
+            className={"hover:text-red-800 text-lg"}
+          >
+            Pokédex
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            activeStyle={styles.active}
+            isActive={(match, location) => {
+              if (location.pathname === "/about") {
+                return true;
+              }
+            }}
             to="/about"
-            className={
-              "/about" === active
-                ? "text-red-600 hover:text-red-800 text-lg"
-                : "hover:text-red-800 text-lg"
-            }
+            className={"hover:text-red-800 text-lg"}
           >
             About
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
   );
+};
+
+const styles = {
+  active: {
+    color: "rgba(220, 38, 38, 1)",
+  },
 };
 
 export default Navbar;
