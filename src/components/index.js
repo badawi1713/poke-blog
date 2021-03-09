@@ -3,5 +3,6 @@ import Categories from "./Categories";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Tags from "./Tags";
-
-export { Tags, Sidebar, BlogDetail, Navbar, Categories };
+import HeaderContent from './HeaderContent'
+import HomeContent from './HomeContent'
+export { Tags, Sidebar, BlogDetail, Navbar, Categories, HeaderContent, HomeContent };

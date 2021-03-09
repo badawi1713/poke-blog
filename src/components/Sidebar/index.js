@@ -8,7 +8,7 @@ const Sidebar = () => {
           className="w-full h-full"
           style={{
             backgroundImage:
-              "url(https://64.media.tumblr.com/02f03c1a168ba59bd5ba82395a27be01/tumblr_oaldzpLZhl1ux1dn3o1_500.gif)",
+              "url(/images/pokeball.gif)",
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
